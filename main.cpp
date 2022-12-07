@@ -21,7 +21,7 @@ public:
     {
         arr = new T[n];
         size = n;
-        capacity = n;
+        capacity = n * 2;
         for (int i = 0; i < n; ++i)
         {
             arr [i]= temp [i];
