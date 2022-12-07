@@ -8,6 +8,7 @@ private:
     int capacity;
     int size;
     T* arr;
+    typedef T *iterator;
 public:
     // Constructors and Big 4
     SMVector(int n = 5)
@@ -90,13 +91,13 @@ public:
     }
     //------------------------------------------
     // Iterators
-    T* begin()
+    iterator begin()
     {
         return arr;
     }
-    T* end()
+    iterator end()
     {
-        return arr+(size-1);
+        return arr+(size);
     }
     //------------------------------------------
     // Comparison operations
