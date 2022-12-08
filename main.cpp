@@ -72,8 +72,10 @@ public:
             for (int i = 0; i < other.size; ++i)
             {
                 this-> arr[i] = other.arr[i];
-                other.arr[i] = nullptr;
             }
+            other.arr = nullptr;
+            other.size = 0;
+            other.capacity = 0;
         }
         return *this;
     }
