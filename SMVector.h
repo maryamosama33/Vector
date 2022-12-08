@@ -1,8 +1,8 @@
+#ifndef UNTITLED3_SMVECTOR_H
+#define UNTITLED3_SMVECTOR_H
 #include <bits/stdc++.h>
 using namespace std;
 
-#ifndef ASSIGNMENT_3_SMVECTOR_H
-#define ASSIGNMENT_3_SMVECTOR_H
 template<class T>
 class SMVector
 {
@@ -19,18 +19,18 @@ public:
         Size=0;
         arr = new T[Capacity];
     }
-    //---------------------------------
+    //-----------------------------------------------
     SMVector (T* temp, int n )
     {
         arr = new T[n];
         Size = n;
-        Capacity = n;
+        Capacity = n * 2;
         for (int i = 0; i < n; ++i)
         {
             arr [i]= temp [i];
         }
     }
-    //---------------------------------
+    //-----------------------------------------------
     SMVector (const SMVector& other)
     {
         Size = other.Size;
@@ -41,12 +41,12 @@ public:
             arr[i]= other.arr[i];
         }
     }
-    //---------------------------------
+    //-----------------------------------------------
     ~SMVector()
     {
         delete [] arr;
     }
-    //----------------------------------
+    //-----------------------------------------------
     SMVector &operator=(const SMVector& other)
     {
         if(this != &other)
@@ -62,7 +62,7 @@ public:
         }
         return *this;
     }
-    //------------------------------------------
+    //-----------------------------------------------
     SMVector &operator=(const SMVector&& other)
     {
         if(this != &other)
@@ -74,7 +74,6 @@ public:
             for (int i = 0; i < other.Size; ++i)
             {
                 this-> arr[i] = other.arr[i];
-                other.arr[i] = nullptr;
             }
             other.arr = nullptr;
             other.Size = 0;
@@ -82,7 +81,7 @@ public:
         }
         return *this;
     }
-    //------------------------------------------
+    //-----------------------------------------------
     // Access operations
     T& operator[](int n)
     {
@@ -98,7 +97,7 @@ public:
             cout << str << endl;
         }
     }
-    //------------------------------------------
+    //-----------------------------------------------
     // Iterators
     iterator begin()
     {
@@ -108,7 +107,7 @@ public:
     {
         return arr+(Size);
     }
-    //------------------------------------------
+    //-----------------------------------------------
     // Comparison operations
     bool operator==(const SMVector<T>&other )
     {
@@ -124,7 +123,7 @@ public:
         }
         return true;
     }
-    //------------------------------------------
+    //-----------------------------------------------
     bool operator< (const SMVector<T>&other)
     {
         for (int i = 0; i < min(Size,other.Size); ++i)
@@ -137,7 +136,7 @@ public:
         else
             return false;
     }
-    //------------------------------------------
+    //-----------------------------------------------
     int push_back(T element)
     {
         if(Size < Capacity){
@@ -150,7 +149,7 @@ public:
         return Size;
     }
 
-    //------------------------------------------
+    //-----------------------------------------------
     T pop_back()
     {
         T* new_arr = new T[Capacity];
@@ -163,7 +162,7 @@ public:
         new_arr = nullptr;
         return arr[Size - 1];
     }
-    //------------------------------------------
+    //-----------------------------------------------
     void erase(iterator pos)
     {
         int index;
@@ -190,7 +189,7 @@ public:
         Size--;
 
     }
-    //------------------------------------------
+    //-----------------------------------------------
     void erase(iterator iterator1, iterator iterator2)
     {
         if(iterator1 == iterator2){
@@ -241,12 +240,12 @@ public:
         Size = Size - (index2 - index1);
     }
 
-    //------------------------------------------
+    //-----------------------------------------------
     void clear()
     {
         Size = 0;
     }
-    //------------------------------------------
+    //-----------------------------------------------
     void insert(iterator pos, T element)
     {
         int index;
@@ -286,30 +285,30 @@ public:
             Size++;
         }
     }
-    //------------------------------------------
+    //-----------------------------------------------
     int size() const
     {
         return Size;
     }
-    //------------------------------------------
+    //-----------------------------------------------
     int capacity() const
     {
         return Capacity;
     }
-    //------------------------------------------
+    //-----------------------------------------------
     int resize()
     {
-            Capacity *= 2;
-            T* new_arr = new T[Capacity];
-            for(int i = 0; i < Size; i++){
-                new_arr[i] = arr[i];
-            }
-            delete[] arr;
-            arr = new_arr;
-            new_arr = nullptr;
-            return Capacity;
+        Capacity *= 2;
+        T* new_arr = new T[Capacity];
+        for(int i = 0; i < Size; i++){
+            new_arr[i] = arr[i];
+        }
+        delete[] arr;
+        arr = new_arr;
+        new_arr = nullptr;
+        return Capacity;
     }
-    //------------------------------------------
+    //-----------------------------------------------
     bool empty()
     {
         if(Size == 0)
@@ -321,17 +320,16 @@ public:
             return false;
         }
     }
-    //------------------------------------------
-    //friend ostream& operator << (ostream& out, SMVector<T> v);
+    //-----------------------------------------------
+    friend ostream& operator<<(ostream& out, SMVector<T> v)
+    {
+        for(int i = 0; i < v.Size; i++){
+            out << v[i] << " ";
+        }
+        out << endl;
+        return out;
+    }
+    //-----------------------------------------------
 };
 
-//template<class T>
-//ostream& operator << (ostream& out, SMVector<T> v){
-//    for(int i = 0; i < v.Size; i++){
-//       out << v[i] << " ";
-//    }
-//    out << endl;
-//    return out;
-//}
-
-#endif //ASSIGNMENT_3_SMVECTOR_H
+#endif
