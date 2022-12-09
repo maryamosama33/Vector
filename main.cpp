@@ -1,4 +1,4 @@
-#include "SMVector.h"
+#include "SMVector.cpp"
 int main()
 {
     int x1[5]={1,2,3,5,6};
