@@ -256,7 +256,7 @@ void SMVector<T>:: insert(iterator pos, T element)
         cout << str << endl;
         return;
     }
-    if(Capacity < Size){
+    if(Capacity > Size){
         for(int i = Size; i > index - 1; i--){
             arr[i] = arr[i - 1];
         }
