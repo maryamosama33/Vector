@@ -136,6 +136,7 @@ template<class T>
 T SMVector<T>:: pop_back()
 {
     T* new_arr = new T[Capacity];
+    T last = arr[Size - 1];
     Size -= 1;
     for(int i = 0; i < Size; i++){
         new_arr[i] = arr[i];
@@ -143,7 +144,7 @@ T SMVector<T>:: pop_back()
     delete[] arr;
     arr = new_arr;
     new_arr = nullptr;
-    return arr[Size - 1];
+    return last;
 }
 //-----------------------------------------------
 template<class T>
