@@ -15,9 +15,9 @@ SMVector<T>::SMVector(T* temp, int n )
     Size = n;
     Capacity = n * 2;
     for (int i = 0; i < n; ++i)
-{
-arr [i]= temp [i];
-}
+    {
+      arr [i]= temp [i];
+    }
 }
 //-----------------------------------------------
 template<class T>
@@ -313,12 +313,3 @@ bool SMVector<T>:: empty()
     }
 }
 //-----------------------------------------------
-//template<class T>
-//ostream& operator<<(ostream& out, SMVector<T> v)
-//{
-//    for(int i = 0; i < v.Size; i++){
-//        out << v[i] << " ";
-//    }
-//    out << endl;
-//    return out;
-//}
